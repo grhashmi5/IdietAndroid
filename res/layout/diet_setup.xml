@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/accountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Account"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+        
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+
+         <TableRow >
+             <TextView
+                android:id="@+id/selectDietText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Select Diet"
+                android:textStyle="normal"
+                android:layout_margin="12dip"
+                android:layout_weight="0"
+                />
+             <Spinner
+	                android:id="@+id/selectDietSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left" 
+	                android:entries="@array/selectDietArray"
+	                />
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/totalCaloriesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Total Calories"
+                android:textStyle="normal"
+                android:layout_margin="12dip"
+                android:layout_weight="0"
+                />
+             <EditText
+                 android:id="@+id/totalCaloriesEditText"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="textNoSuggestions"
+                 android:layout_weight="1" >
+             </EditText>
+         </TableRow>
+         <TableRow >
+              <TextView
+                android:id="@+id/carbohydratesTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="Carbohydrates"
+                android:textStyle="normal"
+                android:layout_weight="2.5"
+                
+                />
+         	 <EditText
+         	     android:id ="@+id/carbohydratesGramEditText"
+         	     android:layout_height="wrap_content"
+         	     android:inputType="textNoSuggestions"
+         	     android:layout_width="0dip"
+         	     android:layout_weight="1"
+         	     
+         	     >
+         	 </EditText>
+         	 <TextView
+                android:id="@+id/carbohydratesGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="g"
+                android:textStyle="normal"
+                android:layout_weight="1"
+                
+                />
+         	 <EditText
+         	     android:id ="@+id/carbohydratesPercentEditText"
+         	     android:layout_width="0dip"
+         	     android:layout_height="wrap_content"
+         	     android:inputType="textNoSuggestions"
+         	     android:layout_weight="1"
+         	    
+         	     >
+         	 </EditText>
+         	 <TextView
+                android:id="@+id/carbohydratesPercentTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:textStyle="normal"
+                android:layout_weight="1"
+                
+                
+                />
+         	 <CheckBox 
+         	     android:id="@+id/carbohydratesCheckBox"
+         	     android:layout_weight="0.5"
+         	     />
+             
+         </TableRow>
+         <TableRow >
+              <TextView
+                android:id="@+id/proteinsTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Proteins"
+                android:textStyle="normal"
+                android:layout_weight="2.1"
+                />
+         	 <EditText
+         	     android:id ="@+id/proteinsGramEditText"
+         	     android:layout_width="0dip"
+         	     android:layout_height="wrap_content"
+         	     android:inputType="textNoSuggestions"
+         	     android:layout_weight="1">
+         	 </EditText>
+         	 <TextView
+                android:id="@+id/proteinsGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="g"
+                android:textStyle="normal"
+                android:layout_weight="1"
+                />
+         	 <EditText
+         	     android:id ="@+id/proteinsPercentEditText"
+         	     android:layout_width="0dip"
+         	     android:layout_height="wrap_content"
+         	     android:inputType="textNoSuggestions"
+         	     android:layout_weight="1">
+         	 </EditText>
+         	 <TextView
+                android:id="@+id/proteinsPercentTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="%"
+                android:textStyle="normal"
+                android:layout_weight="1"
+                />
+         	 <CheckBox 
+         	     android:id="@+id/proteinsCheckBox"
+         	     android:layout_weight="0.5"
+         	     />
+             
+         </TableRow>
+         <TableRow >
+              <TextView
+                android:id="@+id/fatsTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Fats"
+                android:textStyle="normal"
+                android:layout_weight="2.1"
+                />
+         	 <EditText
+         	     android:id ="@+id/fatsGramEditText"
+         	     android:layout_width="0dip"
+         	     android:layout_height="wrap_content"
+         	     android:inputType="textNoSuggestions"
+         	     android:layout_weight="1">
+         	 </EditText>
+         	 <TextView
+                android:id="@+id/fatsGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="g"
+                android:textStyle="normal"
+                android:layout_weight="1"
+                />
+         	 <EditText
+         	     android:id ="@+id/fatsPercentEditText"
+         	     android:layout_width="0dip"
+         	     android:layout_height="wrap_content"
+         	     android:inputType="textNoSuggestions"
+         	     android:layout_weight="1">
+         	 </EditText>
+         	 <TextView
+                android:id="@+id/fatsPercentTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="%"
+                android:textStyle="normal"
+                android:layout_weight="1"
+                />
+         	 <CheckBox 
+         	     android:id="@+id/fatsCheckBox"
+         	     android:layout_weight="0.5"
+         	     />
+             
+         </TableRow>
+         <TableRow >
+              <TextView
+                android:id="@+id/goalTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Goal"
+                android:textStyle="normal"
+                android:layout_weight="0"
+                />
+              <Spinner
+	                android:id="@+id/selectGoalSpinner"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left" 
+	                android:entries="@array/selectGoalArray"
+	                
+	                />
+         </TableRow>
+         <TableRow >
+             <TextView
+                android:id="@+id/caloriesSuggestedTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+           
+                android:textStyle="normal"
+                android:layout_weight="0"
+                />
+         </TableRow>
+         
+         </TableLayout>
+      
+    </LinearLayout>
+</ScrollView>

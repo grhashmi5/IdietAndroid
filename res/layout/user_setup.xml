@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/accountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Account"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+     
+     <TableLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         >
+         <TableRow >
+             <TextView
+                android:id="@+id/firstNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="First name"
+                android:textStyle="normal"
+                />
+             <EditText
+                android:id="@+id/firstNameEditText"
+                android:inputType="textNoSuggestions"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:ems="10"
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                >
+                <requestFocus />
+            </EditText>
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/lastNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Last name"
+                android:textStyle="normal" />
+             <EditText
+                android:id="@+id/lastNameEditText"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textNoSuggestions" 
+                android:layout_margin="4dip"
+                android:layout_weight = "1"
+                >
+                <requestFocus />
+            </EditText>
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/passwordTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Password"
+                android:textStyle="normal" />
+             <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" 
+                android:layout_margin="4dip"
+                android:layout_weight = "1"
+                >
+                <requestFocus />
+            </EditText>
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/repeatPasswordTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Repeat Password"
+                android:textStyle="normal" />
+
+
+
+
+             <EditText
+                 android:id="@+id/repeatPasswordEditText"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="textPassword" 
+                 android:layout_weight = "1">
+
+                <requestFocus />
+            </EditText>
+         </TableRow>
+
+         <TextView
+             android:id="@+id/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Information"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:gravity="left"
+        android:textStyle="bold"
+             
+              />
+         <TableRow >
+             <TextView
+                android:id="@+id/dateOfBirthTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Date of birth"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+
+             <DatePicker
+                 android:id="@+id/datePicker1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" 
+                 />
+             
+             
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/heightTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Height:"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+             
+             <EditText
+                 android:id="@+id/heightEditText"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="numberDecimal"
+                 android:layout_weight="1" >
+
+            </EditText>
+            
+             <TextView
+                android:id="@+id/cmTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="cm"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+             
+         </TableRow>
+         <TableRow >
+             <TextView
+                android:id="@+id/weightTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Weight:"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+             
+             <EditText
+                 android:id="@+id/weightEditText"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="numberDecimal"
+                 android:layout_weight="1" >
+            </EditText>
+            
+             <TextView
+                android:id="@+id/kgTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="kg"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+         </TableRow>
+         <TableRow >
+             <TextView
+                android:id="@+id/unitsTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Units:"
+                android:textStyle="normal" 
+                android:layout_margin="0dip"
+                android:layout_weight="0"/>
+             <RadioGroup 
+                 android:id="@+id/unitRadioGroup"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal"
+             >
+
+                <RadioButton
+	                 android:id="@+id/metricRadio"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	      			 android:layout_weight="1"
+	                 
+	                 android:checked="true"
+	                 android:text="Metric" />
+
+            	<RadioButton
+	                android:id="@+id/americanRadio"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:checked="false"
+	                android:text="American"
+	                android:layout_weight="1"
+	                 />
+             </RadioGroup>
+
+                                           
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/sexTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="You are:"
+                android:textStyle="normal" 
+                android:layout_margin="0dip"
+                android:layout_weight="0"/>
+             
+             <RadioGroup 
+                 android:id= "@+id/sexRadioGroup"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+	            <RadioButton
+	                android:id="@+id/maleRadio"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:checked="true"
+	                android:text="Male"
+	                android:layout_weight="1"
+	             />
+            	<RadioButton
+                	android:id="@+id/femaleRadio"
+                	android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+                	android:checked="false"
+                	android:text="Female" 
+                	android:layout_weight="1"
+                />
+            </RadioGroup>
+             
+
+            
+         </TableRow>
+         <TableRow >
+             <TextView
+                android:id="@+id/bpTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Blood Pressure:"
+                android:textStyle="normal" 
+                android:layout_margin="0dip"
+                android:layout_weight="0"
+                android:layout_gravity="center_vertical"/>
+             <Spinner
+	                android:id="@+id/bpSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left" 
+	                android:entries="@array/bpArray"
+	                />
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/sugarTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Blood Sugar:"
+                android:textStyle="normal" 
+                android:layout_margin="0dip"
+                android:layout_weight="0"
+                android:layout_gravity="center_vertical"/>
+             
+             <Spinner
+	                android:id="@+id/sugarSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left"
+	                android:entries="@array/bpArray" />
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/metabolismTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Metabolism rate:"
+                android:textStyle="normal" 
+                android:layout_margin="0dip"
+                android:layout_weight="0"
+                android:layout_gravity="center_vertical"/>
+             
+             <Spinner
+	                android:id="@+id/metabolismSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left" 
+	                android:entries="@array/bpArray"/>
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@+id/activityLevelTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Activity level:"
+                android:textStyle="normal" 
+                android:layout_margin="0dip"
+                android:layout_weight="0"
+                android:layout_gravity="center_vertical"/>
+             
+             <Spinner
+	                android:id="@+id/activityLevelSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left"
+	                android:entries="@array/bpArray" />
+         </TableRow>
+         
+         <TableRow >
+	            <Button 
+	        android:id = "@+id/cancelButton"
+	        android:layout_height="wrap_content"
+	        android:text="Cancel"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:layout_margin="4dip"
+	        	/>
+	            <Button 
+	        android:id = "@+id/doneButton"
+	        android:layout_height="wrap_content"
+	        android:text="Done"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:layout_margin="4dip"
+	        android:onClick="onClickDoneButton"
+	          	/>
+	     </TableRow>
+     </TableLayout>
+     
+     
+</LinearLayout>
+</ScrollView>

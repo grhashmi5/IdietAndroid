@@ -1,0 +1,31 @@
+<resources>
+
+    <string name="app_name">IdietAndroid</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">IDiet Android</string>
+    <string name="mainTitle">Welcome to IDiet!</string>
+    <string-array name="bpArray">
+        <item >low</item>
+        <item >normal</item>
+        <item >high</item>
+        
+    </string-array>
+    <string-array name="selectDietArray">
+        <item >Custom Diet</item>
+        <item >Atkins</item>
+        <item >Body for life</item>
+         <item >Jenny Craig</item>
+        <item >The Pritkin Principle</item>
+        <item >The Zone</item>
+		<item >USDA</item>        
+        
+    </string-array>
+    
+    <string-array name="selectGoalArray">
+        <item >Maintain weight</item>
+        <item >Gain weight</item>
+        <item >Lose weight</item>
+    </string-array>
+
+</resources>
