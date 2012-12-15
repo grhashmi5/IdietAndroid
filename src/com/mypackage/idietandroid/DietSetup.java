@@ -10,6 +10,8 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -202,10 +204,168 @@ public class DietSetup  extends Activity{
 
 	         public void onFocusChange(View v, boolean hasFocus) {
 	             if(!hasFocus){
-	            	 
+	            	 try {
+	            		 /*  565 */       totalCals = Double.parseDouble(totalCaloriesEditText.getText().toString());
+	            		 /*      */     }
+	            		 /*      */     catch (NumberFormatException numberFormatException) {
+	            		 /*      */     }
+	            		 /*      */     try {
+	            		 /*  570 */       proteinp = Double.parseDouble(proteinsPEditText.getText().toString());
+	            		 /*      */     }
+	            		 /*      */     catch (NumberFormatException numberFormatException) {
+	            		 /*      */     }
+	            		 /*      */     try {
+	            		 /*  575 */       carbsp = Double.parseDouble(carbohydratesPEditText.getText().toString());
+	            		 /*      */     }
+	            		 /*      */     catch (NumberFormatException numberFormatException) {
+	            		 /*      */     }
+	            		 /*      */     try {
+	            		 /*  580 */       fatp = Double.parseDouble(fatsPEditText.getText().toString());
+	            		 /*      */     }
+	            		 /*      */     catch (NumberFormatException numberFormatException) {
+	            		 /*      */     }
+	            		 /*  584 */     if (totalCals != 0.0D) {
+	            		 /*  585 */       if (selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Atkins") == 0) {
+	            		 /*  586 */         carbohydratesPEditText.setEnabled(false);
+	            		 /*      */       }
+	            		 /*  588 */       if (carbsp + fatp + proteinp != 100.0D) {
+	            		 /*  589 */         if ((carbohydratesPEditText.isEnabled()) && (fatsPEditText.isEnabled())) {
+	            		 /*  590 */           double diff = (100.0D - proteinp - carbsp - fatp) / 4.0D;
+	            		 /*  591 */           carbsp = Utils.round(carbsp + diff * 3.0D, 1);
+	            		 /*  592 */           fatp = Utils.round(fatp + diff * 1.0D, 1);
+	            		 /*  593 */         } else if (carbohydratesPEditText.isEnabled()) {
+	            		 /*  594 */           carbsp = (100.0D - proteinp - fatp);
+	            		 /*  595 */         } else if (fatsPEditText.isEnabled()) {
+	            		 /*  596 */           fatp = (100.0D - proteinp - carbsp);
+	            		 /*      */         }
+	            		 /*  598 */         protein = Utils.round(Utils.percent(totalCals, proteinp) / 4.0D, 1);
+	            		 /*  599 */         carbs = Utils.round(Utils.percent(totalCals, carbsp) / 4.0D, 1);
+	            		 /*  600 */         fat = Utils.round(Utils.percent(totalCals, fatp) / 9.0D, 1);
+	            		 /*      */       }
+	            		 /*      */ 
+	            		 /*  603 */       updateFields();
+	            		 /*      */     }
 	             } 
 	         }
 	     });
+	     
+	     this.carbohydratesPEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				if (!hasFocus){
+					try {
+						/*  786 */       totalCals = Double.parseDouble(totalCaloriesEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  791 */       proteinp = Double.parseDouble(proteinsPEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  796 */       carbsp = Double.parseDouble(carbohydratesPEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  801 */       fatp = Double.parseDouble(fatsPEditText.getText().toString());
+						/*      */     } catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  805 */       protein = Double.parseDouble(proteinsEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  810 */       carbs = Double.parseDouble(carbohydratesEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  815 */       fat = Double.parseDouble(fatsEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						if (totalCals != 0.0D) {
+							/*  644 */       if (selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Atkins") == 0) {
+							/*  645 */         totalCals = Utils.round(Utils.ppercent(carbs * 4.0D, carbsp), 1);
+							/*  646 */         totalCaloriesEditText.setText(new Double(totalCals).toString());
+							/*      */       }
+							/*  648 */       if (carbsp + fatp + proteinp != 100.0D) {
+							/*  649 */         if ((proteinsPEditText.isEnabled()) && (fatsPEditText.isEnabled())) {
+							/*  650 */           double diff = (100.0D - proteinp - carbsp - fatp) / 4.0D;
+							/*  651 */           proteinp = Utils.round(proteinp + diff * 3.0D, 1);
+							/*  652 */           fatp = Utils.round(fatp + diff * 1.0D, 1);
+							/*  653 */         } else if (proteinsPEditText.isEnabled()) {
+							/*  654 */           proteinp = (100.0D - carbsp - fatp);
+							/*  655 */         } else if (fatsPEditText.isEnabled()) {
+							/*  656 */           fatp = (100.0D - proteinp - carbsp);
+							/*      */         }
+							/*  658 */         protein = Utils.round(Utils.percent(totalCals, proteinp) / 4.0D, 1);
+							/*  659 */         carbs = Utils.round(Utils.percent(totalCals, carbsp) / 4.0D, 1);
+							/*  660 */         fat = Utils.round(Utils.percent(totalCals, fatp) / 9.0D, 1);
+							/*      */       }
+							/*  662 */       updateFields();
+							/*      */     }
+				}
+				
+			}
+		});
+	     
+	     this.fatsPEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				if (!hasFocus){
+					try {
+						/*  786 */       totalCals = Double.parseDouble(totalCaloriesEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  791 */       proteinp = Double.parseDouble(proteinsPEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  796 */       carbsp = Double.parseDouble(carbohydratesPEditText.getText().toString());
+						/*      */     }
+						/*      */     catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						/*      */     try {
+						/*  801 */       fatp = Double.parseDouble(fatsPEditText.getText().toString());
+						/*      */     } catch (NumberFormatException numberFormatException) {
+						/*      */     }
+						if (totalCals != 0.0D) {
+							/*  688 */       if (selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Atkins") == 0) {
+							/*  689 */         carbohydratesPEditText.setEnabled(false);
+							/*      */       }
+							/*  691 */       if (carbsp + fatp + proteinp != 100.0D) {
+							/*  692 */         if ((carbohydratesPEditText.isEnabled()) && (proteinsPEditText.isEnabled())) {
+							/*  693 */           double diff = (100.0D - proteinp - carbsp - fatp) / 4.0D;
+							/*  694 */           carbsp = Utils.round(carbsp + diff * 2.0D, 1);
+							/*  695 */           proteinp = Utils.round(proteinp + diff * 2.0D, 1);
+							/*  696 */         } else if (carbohydratesPEditText.isEnabled()) {
+							/*  697 */           carbsp = (100.0D - proteinp - fatp);
+							/*  698 */         } else if (proteinsPEditText.isEnabled()) {
+							/*  699 */           proteinp = (100.0D - fatp - carbsp);
+							/*      */         }
+							/*  701 */         protein = Utils.round(Utils.percent(totalCals, proteinp) / 4.0D, 1);
+							/*  702 */         carbs = Utils.round(Utils.percent(totalCals, carbsp) / 4.0D, 1);
+							/*  703 */         fat = Utils.round(Utils.percent(totalCals, fatp) / 9.0D, 1);
+							/*      */       }
+							/*      */ 
+							/*  706 */       updateFields();
+							}
+					
+				}
+				
+			}
+		});
 	     
 	     this.totalCaloriesEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
 			
@@ -394,6 +554,120 @@ public class DietSetup  extends Activity{
 				
 			}
 		});
+	     
+	     this.fatsEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if (!hasFocus){
+					try{
+						
+					/*  786 */       totalCals = Double.parseDouble(totalCaloriesEditText.getText().toString());
+				/*      */     }
+				/*      */     catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				/*      */     try {
+				/*  791 */       proteinp = Double.parseDouble(proteinsPEditText.getText().toString());
+				/*      */     }
+				/*      */     catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				/*      */     try {
+				/*  796 */       carbsp = Double.parseDouble(carbohydratesPEditText.getText().toString());
+				/*      */     }
+				/*      */     catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				/*      */     try {
+				/*  801 */       fatp = Double.parseDouble(fatsPEditText.getText().toString());
+				/*      */     } catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				/*      */     try {
+				/*  805 */       protein = Double.parseDouble(proteinsEditText.getText().toString());
+				/*      */     }
+				/*      */     catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				/*      */     try {
+				/*  810 */       carbs = Double.parseDouble(carbohydratesEditText.getText().toString());
+				/*      */     }
+				/*      */     catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				/*      */     try {
+				/*  815 */       fat = Double.parseDouble(fatsEditText.getText().toString());
+				/*      */     }
+				/*      */     catch (NumberFormatException numberFormatException) {
+				/*      */     }
+				if (totalCals != 0.0D) {
+					/*  950 */       if (selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Atkins") == 0) {
+					/*  951 */         fatp = Utils.round(Utils.npercent(totalCals, fat * 4.0D), 1);
+					/*  952 */         proteinp = (100.0D - carbsp - fatp);
+					/*  953 */         protein = Utils.round(Utils.percent(totalCals, protein) / 4.0D, 1);
+					/*  954 */       } else if (selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Custom Diet") == 0) {
+					/*  955 */         fatp = Utils.round(Utils.npercent(totalCals, fat * 9.0D), 1);
+					/*  956 */         if ((carbohydratesPEditText.isEnabled()) && (proteinsPEditText.isEnabled())) {
+					/*  957 */           double diff = (100.0D - proteinp - carbsp - fatp) / 4.0D;
+					/*  958 */           carbsp = Utils.round(carbsp + diff * 2.0D, 1);
+					/*  959 */           proteinp = Utils.round(proteinp + diff * 2.0D, 1);
+					/*  960 */         } else if (carbohydratesPEditText.isEnabled()) {
+					/*  961 */           carbsp = (100.0D - proteinp - fatp);
+					/*  962 */         } else if (proteinsPEditText.isEnabled()) {
+					/*  963 */           proteinp = (100.0D - fatp - carbsp);
+					/*      */         }
+					/*  965 */         protein = Utils.round(Utils.percent(totalCals, proteinp) / 4.0D, 1);
+					/*  966 */         carbs = Utils.round(Utils.percent(totalCals, carbsp) / 4.0D, 1);
+					/*      */       } else {
+					/*  968 */         totalCals = Utils.round(Utils.ppercent(fat * 9.0D, fatp), 1);
+					/*  969 */         totalCaloriesEditText.setText(new Double(totalCals).toString());
+					/*  970 */         carbs = Utils.round(Utils.percent(totalCals, carbsp) / 4.0D, 1);
+					/*  971 */         protein = Utils.round(Utils.percent(totalCals, proteinp) / 4.0D, 1);
+					/*      */       }
+					/*  973 */       updateFields();
+					/*      */     }
+					
+					
+				}
+			}
+		});
+	     
+	     this.proteinsCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked){
+					proteinsPEditText.setEnabled(true);
+				}
+				else{
+					proteinsPEditText.setEnabled(false);
+				}
+				
+			}
+		});
+	     
+	     this.carbohydratesCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					if (isChecked){
+						carbohydratesPEditText.setEnabled(true);
+					}
+					else{
+						carbohydratesPEditText.setEnabled(false);
+					}
+					
+				}
+			});
+	     
+	     this.fatsCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					if (isChecked){
+						fatsPEditText.setEnabled(true);
+					}
+					else{
+						fatsPEditText.setEnabled(false);
+					}
+					
+				}
+			});
 	     
 	}
 	
