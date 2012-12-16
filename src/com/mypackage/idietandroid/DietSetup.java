@@ -134,8 +134,11 @@ public class DietSetup  extends Activity{
 			        proteinsPEditText.setEnabled(true);
 			        fatsPEditText.setEnabled(true);
 			        if (position!=0){
+			        	carbohydratesCheckBox.setChecked(false);
 			        	carbohydratesCheckBox.setEnabled(false);
+			        	fatsCheckBox.setChecked(false);
 			        	fatsCheckBox.setEnabled(false);
+			        	proteinsCheckBox.setChecked(false);
 			        	proteinsCheckBox.setEnabled(false);
 			        	
 			        }
@@ -147,13 +150,14 @@ public class DietSetup  extends Activity{
 			        }
 			        diettype = position;
 			        
-			        if (selectedItemView.toString().compareToIgnoreCase("Atkins") == 0) {
-			        	carbs = 40.0D;
+			        //if (selectedItemView.toString().compareToIgnoreCase("Atkins") == 0) {
+			        if (position == 1){	
+			        carbs = 40.0D;
 			        	carbsp = Utils.round(Utils.npercent(totalCals, carbs * 4.0D), 1);
 			        	updateFields();
 			        	
 			        }
-			        else if (selectedItemView.toString().compareToIgnoreCase("Body for Life") == 0) {
+			        else if (position == 2) {
 			        	carbsp = 50.0D;
 			        	proteinp = 40.0D;
 			        	fatp = 10.0D;
@@ -163,7 +167,7 @@ public class DietSetup  extends Activity{
 			        	updateFields();
 			        	
 			        } 
-			        else if ((selectedItemView.toString().compareToIgnoreCase("Jenny Craig") == 0) || (selectedItemView.toString().toString().compareToIgnoreCase("USDA") == 0)) {
+			        else if (position == 3 || position == 6) {
 			        	proteinp = 22.5D;
 			        	carbsp = 55.0D;
 			        	fatp = 22.5D;
@@ -173,13 +177,13 @@ public class DietSetup  extends Activity{
 			            updateFields();
 			            
 			        } 
-			        else if (selectedItemView.toString().toString().compareToIgnoreCase("The Pritikin Principle") == 0) {
+			        else if (position == 4) {
 			        	fatp = 10.0D;
 			        	fat = Utils.round(Utils.percent(totalCals, fatp) / 9.0D, 1);
 			        	updateFields();
 			        	
 			        } 
-			        else if (selectedItemView.toString().toString().compareToIgnoreCase("The Zone") == 0) {
+			        else if (position == 5) {
 			        	fatp = 30.0D;
 			        	proteinp = 30.0D;
 			        	carbsp = 40.0D;
@@ -195,7 +199,7 @@ public class DietSetup  extends Activity{
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
-				
+				updateFields();
 			}
 		});
 	     
@@ -243,8 +247,9 @@ public class DietSetup  extends Activity{
 	            		 /*  600 */         fat = Utils.round(Utils.percent(totalCals, fatp) / 9.0D, 1);
 	            		 /*      */       }
 	            		 /*      */ 
-	            		 /*  603 */       updateFields();
+	            		 /*  603 */       
 	            		 /*      */     }
+	            		 updateFields();
 	             } 
 	         }
 	     });
@@ -308,8 +313,9 @@ public class DietSetup  extends Activity{
 							/*  659 */         carbs = Utils.round(Utils.percent(totalCals, carbsp) / 4.0D, 1);
 							/*  660 */         fat = Utils.round(Utils.percent(totalCals, fatp) / 9.0D, 1);
 							/*      */       }
-							/*  662 */       updateFields();
+							/*  662 */      updateFields();
 							/*      */     }
+						 
 				}
 				
 			}
@@ -632,10 +638,10 @@ public class DietSetup  extends Activity{
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				if (isChecked){
-					proteinsPEditText.setEnabled(true);
+					proteinsPEditText.setEnabled(false);
 				}
 				else{
-					proteinsPEditText.setEnabled(false);
+					proteinsPEditText.setEnabled(true);
 				}
 				
 			}
@@ -646,10 +652,10 @@ public class DietSetup  extends Activity{
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 					if (isChecked){
-						carbohydratesPEditText.setEnabled(true);
+						carbohydratesPEditText.setEnabled(false);
 					}
 					else{
-						carbohydratesPEditText.setEnabled(false);
+						carbohydratesPEditText.setEnabled(true);
 					}
 					
 				}
@@ -660,10 +666,10 @@ public class DietSetup  extends Activity{
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 					if (isChecked){
-						fatsPEditText.setEnabled(true);
+						fatsPEditText.setEnabled(false);
 					}
 					else{
-						fatsPEditText.setEnabled(false);
+						fatsPEditText.setEnabled(true);
 					}
 					
 				}
@@ -719,15 +725,16 @@ public class DietSetup  extends Activity{
 	     this.carbohydratesPEditText.setText(new Double(this.carbsp).toString());
 	     this.fatsPEditText.setText(new Double(this.fatp).toString());
 	     this.proteinsPEditText.setText(new Double(this.proteinp).toString());
-	     if (this.selectGoalSpinner.getSelectedItem().toString().compareToIgnoreCase("Atkins") == 0) {
+	     if (this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Atkins") == 0) {
+	    
 	       this.carbohydratesEditText.setEnabled(false);
 	     } 
-	     else if ((this.selectGoalSpinner.getSelectedItem().toString().compareToIgnoreCase("Jenny Craig") == 0) || (this.selectGoalSpinner.getSelectedItem().toString().compareToIgnoreCase("Body for Life") == 0) || (this.selectGoalSpinner.getSelectedItem().toString().compareToIgnoreCase("The Zone") == 0) || (this.selectGoalSpinner.getSelectedItem().toString().compareToIgnoreCase("USDA") == 0))
+	     else if ((this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Jenny Craig") == 0) || (this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("Body for Life") == 0) || (this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("The Zone") == 0) || (this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("USDA") == 0))
 	     {
 	       this.carbohydratesPEditText.setEnabled(false);
 	       this.proteinsPEditText.setEnabled(false);
 	       this.fatsPEditText.setEnabled(false);
-	     } else if (this.selectGoalSpinner.getSelectedItem().toString().compareToIgnoreCase("The Pritikin Principle") == 0) {
+	     } else if (this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("The Pritikin Principle") == 0) {
 	       this.fatsPEditText.setEnabled(false);
 	       
 	     }

@@ -71,6 +71,7 @@ public class UserSetup extends Activity {
 	private void initComponents(){
 		
 		fNameEditText = (EditText) findViewById(R.id.firstNameEditText);
+		fNameEditText.setEnabled(false);
 		lNameEditText = (EditText) findViewById(R.id.lastNameEditText);
 		passWordEditText = (EditText) findViewById(R.id.passwordEditText);
 		repeatPassWordEditText = (EditText) findViewById(R.id.repeatPasswordEditText);
