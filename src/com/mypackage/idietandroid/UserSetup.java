@@ -186,7 +186,7 @@ public class UserSetup extends Activity {
 		 this.u.weight = weightD;
 		 this.u.scals = cals;
 		 
-		 /*TestAdapter mDbHelper = new TestAdapter(this);         
+		/* TestAdapter mDbHelper = new TestAdapter(this);         
 	    	mDbHelper.createDatabase();       
 	    	mDbHelper.open();
 	    	
@@ -205,8 +205,8 @@ public class UserSetup extends Activity {
 	    	long count = mDbHelper.noOfRowsInTable();
 	    	
 	    	Utility.ShowMessageBox(this,Long.toString(count) );
-	    	mDbHelper.close();
-	    */	
+	    	mDbHelper.close();*/
+	    	
 	    	
 	    	Intent intent = new Intent(this, DietSetup.class);
 	    	ActivitiesBringe.setObject(this.u);

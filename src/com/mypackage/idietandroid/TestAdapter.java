@@ -1,6 +1,8 @@
 package com.mypackage.idietandroid;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -53,6 +55,44 @@ public class TestAdapter
         } 
         return this; 
     } 
+    
+    public List<String> getAllLabels(String tableName, int id){
+        List<String> labels = new ArrayList<String>();
+        String selectQuery;
+        // Select All Query
+        if (id <0){
+        	 selectQuery = "SELECT  * FROM " + tableName;
+        }
+        else{
+        	selectQuery = "SELECT  * FROM " + tableName + " WHERE food_group_id = "+"'"+id+"'";
+        }
+ 
+        /*SQLiteDatabase db = this.getReadableDatabase();*/
+        Cursor cursor = mDb.rawQuery(selectQuery, null);
+        
+ 
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+            	if(tableName == "food"){
+            		labels.add(cursor.getString(2));
+            	}
+            	else{
+            		labels.add(cursor.getString(1));
+            	}
+                
+            } while (cursor.moveToNext());
+        }
+ 
+        // closing connection
+        cursor.close();
+       // mDb.close();
+ 
+        // returning lables
+        java.util.Collections.sort(labels);
+        return labels;
+    }
+
  
     public void close()  
     { 

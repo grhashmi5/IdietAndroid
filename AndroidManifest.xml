@@ -37,6 +37,18 @@
                 <category  android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             </activity>
+            
+        <activity 
+            android:name=".DailyActivity"
+            android:label="Daily Activity">
+            <intent-filter>
+                <action android:name="net.learn2develop.DailyActivity"/>
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            </activity>
+            <activity android:name=".FoodDatabaseActivity" />
+            <activity android:name=".Meals" />
+            
     </application>
 
 </manifest>

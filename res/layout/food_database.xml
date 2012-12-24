@@ -1,0 +1,67 @@
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
+	
+	<!--      <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/mainTitle"
+	        android:textAppearance="?android:attr/textAppearanceLarge" 
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        /> -->
+	    
+	    <TableLayout 
+	        android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+	        >
+	
+	        <TableRow>
+	
+	            <TextView
+	            android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Select food group"
+                android:textStyle="normal" 
+                android:layout_margin="12dip"
+                android:layout_weight="0"
+                android:layout_gravity="center_vertical" />
+	
+	            <Spinner
+	                android:id="@+id/selectFoodGroupSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left" />
+	        </TableRow>
+	
+	        <TableRow >
+	            <TextView
+	        
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="Select food"
+	        android:gravity="center"
+	        android:textStyle="normal"
+	        />
+	            <Spinner
+	                android:id="@+id/selectFoodSpinner"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="left" />
+	
+	        </TableRow>
+	        
+	    </TableLayout>
+	    
+	</LinearLayout>
+    
+</ScrollView>
+

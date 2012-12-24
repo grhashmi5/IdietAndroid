@@ -1,23 +1,26 @@
 package com.mypackage.idietandroid;
 
-import java.io.File; 
-import java.io.FileOutputStream; 
-import java.io.IOException; 
-import java.io.InputStream; 
-import java.io.OutputStream; 
- 
-import android.content.Context; 
-import android.database.SQLException; 
-import android.database.sqlite.SQLiteDatabase; 
-import android.database.sqlite.SQLiteOpenHelper; 
-import android.util.Log; 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
  
 public class DataBaseHelper extends SQLiteOpenHelper 
 { 
 private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window 
 //destination path (location) of our database on device 
 private static String DB_PATH = "";  
-private static String DB_NAME ="abcd.sql3";// Database name 
+private static String DB_NAME ="abcde.sql3";// Database name 
 private SQLiteDatabase mDataBase;  
 private final Context mContext; 
  
@@ -103,7 +106,9 @@ public void createDataBase() throws IOException
 		// TODO Auto-generated method stub
 		
 	} 
- 
+	
+	
+	 
 } 
 
  

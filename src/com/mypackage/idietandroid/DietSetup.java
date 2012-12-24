@@ -3,6 +3,7 @@ package com.mypackage.idietandroid;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -134,11 +135,11 @@ public class DietSetup  extends Activity{
 			        proteinsPEditText.setEnabled(true);
 			        fatsPEditText.setEnabled(true);
 			        if (position!=0){
-			        	carbohydratesCheckBox.setChecked(false);
+			        	carbohydratesCheckBox.setChecked(true);
 			        	carbohydratesCheckBox.setEnabled(false);
-			        	fatsCheckBox.setChecked(false);
+			        	fatsCheckBox.setChecked(true);
 			        	fatsCheckBox.setEnabled(false);
-			        	proteinsCheckBox.setChecked(false);
+			        	proteinsCheckBox.setChecked(true);
 			        	proteinsCheckBox.setEnabled(false);
 			        	
 			        }
@@ -153,7 +154,7 @@ public class DietSetup  extends Activity{
 			        //if (selectedItemView.toString().compareToIgnoreCase("Atkins") == 0) {
 			        if (position == 1){	
 			        carbs = 40.0D;
-			        	carbsp = Utils.round(Utils.npercent(totalCals, carbs * 4.0D), 1);
+			        carbsp = Utils.round(Utils.npercent(totalCals, carbs * 4.0D), 1);
 			        	updateFields();
 			        	
 			        }
@@ -733,7 +734,7 @@ public class DietSetup  extends Activity{
 	     {
 	       this.carbohydratesPEditText.setEnabled(false);
 	       this.proteinsPEditText.setEnabled(false);
-	       this.fatsPEditText.setEnabled(false);
+	       this.fatsPEditText.setEnabled(false);                                           //  The Pritikin Principle
 	     } else if (this.selectDietSpinner.getSelectedItem().toString().compareToIgnoreCase("The Pritikin Principle") == 0) {
 	       this.fatsPEditText.setEnabled(false);
 	       
@@ -780,6 +781,13 @@ public class DietSetup  extends Activity{
 	         updateFields();
 		       }
 	       }
+	
+	public void onClickDoneButton (View view){
+		
+		Intent intent = new Intent(this, DailyActivity.class);
+		
+		startActivity(intent);
+	}
 	
 	
 	
