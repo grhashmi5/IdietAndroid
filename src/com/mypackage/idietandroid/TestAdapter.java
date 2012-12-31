@@ -56,32 +56,49 @@ public class TestAdapter
         return this; 
     } 
     
+    public String getFactorFromFood (String factorName, String foodName){
+    	String selectQuery;
+    	String result;
+    	selectQuery = "SELECT " +factorName+" FROM food WHERE long_desc = "+"'"+foodName+"'";
+    	 Cursor cursor = mDb.rawQuery(selectQuery, null);
+    	 if (cursor.getCount()>0){
+    		 cursor.moveToFirst();
+    		 result = cursor.getString(0);
+    	 }
+    	 else{
+    		 result = null;
+    	 }
+    	 
+    	 return result;
+    }
+    
     public List<String> getAllLabels(String tableName, int id){
         List<String> labels = new ArrayList<String>();
         String selectQuery;
         // Select All Query
-        if (id <0){
-        	 selectQuery = "SELECT  * FROM " + tableName;
+        if (tableName == "food_group"){
+        	 selectQuery = "SELECT  name FROM " + tableName;
         }
-        else{
-        	selectQuery = "SELECT  * FROM " + tableName + " WHERE food_group_id = "+"'"+id+"'";
+        else if(tableName == "User"){
+        	selectQuery = "SELECT fName FROM " + tableName;
         }
- 
-        /*SQLiteDatabase db = this.getReadableDatabase();*/
+        else {
+        	selectQuery = "SELECT  long_desc FROM " + tableName + " WHERE food_group_id = "+"'"+id+"'";
+        }
+        
         Cursor cursor = mDb.rawQuery(selectQuery, null);
         
  
-        // looping through all rows and adding to list
+        
         if (cursor.moveToFirst()) {
             do {
-            	if(tableName == "food"){
-            		labels.add(cursor.getString(2));
-            	}
-            	else{
-            		labels.add(cursor.getString(1));
-            	}
-                
+            	labels.add(cursor.getString(0));
+            	
             } while (cursor.moveToNext());
+        }
+        
+        if (tableName == "food"){
+        	java.util.Collections.sort(labels);
         }
  
         // closing connection
@@ -89,7 +106,7 @@ public class TestAdapter
        // mDb.close();
  
         // returning lables
-        java.util.Collections.sort(labels);
+        
         return labels;
     }
 

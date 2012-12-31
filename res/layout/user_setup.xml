@@ -42,7 +42,7 @@
                 android:layout_margin="4dip"
                 android:layout_weight="1"
                 >
-                <requestFocus />
+                
             </EditText>
          </TableRow>
          
@@ -63,7 +63,7 @@
                 android:layout_margin="4dip"
                 android:layout_weight = "1"
                 >
-                <requestFocus />
+                
             </EditText>
          </TableRow>
          
@@ -84,7 +84,7 @@
                 android:layout_margin="4dip"
                 android:layout_weight = "1"
                 >
-                <requestFocus />
+               
             </EditText>
          </TableRow>
          
@@ -109,7 +109,7 @@
                  android:inputType="textPassword" 
                  android:layout_weight = "1">
 
-                <requestFocus />
+               
             </EditText>
          </TableRow>
 

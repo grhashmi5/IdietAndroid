@@ -27,5 +27,9 @@
         <item >Gain weight</item>
         <item >Lose weight</item>
     </string-array>
+    <string-array name = "selectAddTypeArray" >
+        <item > gram(s)</item>
+        <item > cup</item>
+    </string-array>
 
 </resources>

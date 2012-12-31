@@ -9,11 +9,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class FoodDatabaseActivity  extends Activity implements OnItemSelectedListener{
 	Spinner selectFoodGroupSpinner;
 	Spinner selectFoodSpinner;
+	EditText addAmountEditText;
+	EditText carbEditText;
+	EditText proteinEditText;
+	EditText fatsEditText;
+	EditText caloriesEditText;
 	
 	
 	@Override
@@ -21,18 +27,29 @@ public class FoodDatabaseActivity  extends Activity implements OnItemSelectedLis
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food_database);
+		init();
+		
+	}
+	
+	private void init() {
 		selectFoodGroupSpinner = (Spinner) findViewById(R.id.selectFoodGroupSpinner);
 		selectFoodGroupSpinner.setOnItemSelectedListener(this);
 		selectFoodSpinner = (Spinner) findViewById(R.id.selectFoodSpinner);
 		selectFoodSpinner.setOnItemSelectedListener(this);
 		loadSpinnerData(selectFoodGroupSpinner.getId());
+		addAmountEditText = (EditText) findViewById(R.id.addAmountEditText);
+		
+		carbEditText = (EditText) findViewById(R.id.carbEditText);
+		proteinEditText = (EditText) findViewById(R.id.protiensEditText);
+		fatsEditText = (EditText) findViewById(R.id.fatsEditText);
+		caloriesEditText = (EditText) findViewById(R.id.calsEditText);
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View arg1, int arg2,
 			long arg3) {
 		int id = parent.getId();
-		int foodGroupId; 
+		
 		switch (id)
 		{
 		case R.id.selectFoodGroupSpinner:
@@ -41,6 +58,7 @@ public class FoodDatabaseActivity  extends Activity implements OnItemSelectedLis
 			break;
 		
 		case R.id.selectFoodSpinner:
+			loadFoodFactors();
 			break;
 		}
 		
@@ -50,6 +68,19 @@ public class FoodDatabaseActivity  extends Activity implements OnItemSelectedLis
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private void loadFoodFactors(){
+		TestAdapter mDbHelper = new TestAdapter(this);         
+    	mDbHelper.createDatabase();       
+    	mDbHelper.open();
+    	String result = mDbHelper.getFactorFromFood("protein_factor", selectFoodSpinner.getSelectedItem().toString());
+    	proteinEditText.setText(result);
+    	result = mDbHelper.getFactorFromFood("fat_factor", selectFoodSpinner.getSelectedItem().toString());
+    	fatsEditText.setText(result);
+    	result = mDbHelper.getFactorFromFood("calorie_factor", selectFoodSpinner.getSelectedItem().toString());
+    	caloriesEditText.setText(result);
+    	//carbEditText.setText(10);
 	}
 	
 	private void loadSpinnerData(int id) {

@@ -71,7 +71,7 @@ public class UserSetup extends Activity {
 	private void initComponents(){
 		
 		fNameEditText = (EditText) findViewById(R.id.firstNameEditText);
-		fNameEditText.setEnabled(false);
+		//fNameEditText.setEnabled(false);
 		lNameEditText = (EditText) findViewById(R.id.lastNameEditText);
 		passWordEditText = (EditText) findViewById(R.id.passwordEditText);
 		repeatPassWordEditText = (EditText) findViewById(R.id.repeatPasswordEditText);
@@ -112,7 +112,25 @@ public class UserSetup extends Activity {
 		this.u.byear = 2012;
 		this.u.gender = 0;
 		this.u.units = 0;
-		/*
+		/*if (passWordEditText.getText().toString().equalsIgnoreCase(repeatPassWordEditText.getText().toString())){
+			this.u.pwd = passWordEditText.getText().toString();
+		}
+		else{
+			Utility.ShowMessageBox(this, "Password and repeat password do not match");
+			return;
+		}
+		
+		if(fNameEditText.getText().toString().trim().length() == 0  
+	    		|| heightEditText.getText().toString().trim().length() == 0
+	    		|| weighEditText.getText().toString().trim().length() == 0
+	    		|| lNameEditText.getText().toString().trim().length() == 0
+	    		
+				){
+	    	Utility.ShowMessageBox(this, "Please fill all the fields");
+	    	return;
+	    }
+		
+		
 		this.u.firstName = fNameEditText.getText().toString();
         this.u.lastName = lNameEditText.getText().toString();
         this.u.height = Double.valueOf(heightEditText.getText().toString());
@@ -123,8 +141,9 @@ public class UserSetup extends Activity {
         this.u.activity = activityLevelSpinner.getSelectedItemPosition();
         this.u.bday = bdayDatePicker.getDayOfMonth();
         this.u.bmonth = bdayDatePicker.getMonth();
-        this.u.byear = bdayDatePicker.getYear();*/
-        /*if (maleRadioButton.isChecked()){
+        this.u.byear = bdayDatePicker.getYear();
+        
+        if (maleRadioButton.isChecked()){
         	this.u.gender = 0;//0 for male
         }
         else{
@@ -136,7 +155,7 @@ public class UserSetup extends Activity {
         }
         else{
         	this.u.units = 1;
-        }*/
+        }
         
         weightD = this.u.weight;
         if (americanRadioButton.isSelected()){
@@ -170,7 +189,7 @@ public class UserSetup extends Activity {
 			 
 		 }
 		 
-		 /*switch (this.activityLevelSpinner.getSelectedItemPosition()) {
+		 switch (this.activityLevelSpinner.getSelectedItemPosition()) {
 		 	case 0:
 		 		cals = (int)(cals * 1.2D);
 		    break;
@@ -180,15 +199,16 @@ public class UserSetup extends Activity {
 		    case 2:
 		    	cals = (int)(cals * 1.8D);
 		    
-		 }*/
+		 }
 		 cals = (int)(cals * 1.5D);
 		 this.u.height = heightD;
 		 this.u.weight = weightD;
 		 this.u.scals = cals;
 		 
-		/* TestAdapter mDbHelper = new TestAdapter(this);         
+		 TestAdapter mDbHelper = new TestAdapter(this);         
 	    	mDbHelper.createDatabase();       
 	    	mDbHelper.open();
+	    
 	    	
 	    	
 	    	boolean isNewUserInserted = mDbHelper.saveUser(this.u.firstName, this.u.lastName, this.u.pwd, this.u.height,
