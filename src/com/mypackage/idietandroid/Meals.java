@@ -26,12 +26,8 @@ public class Meals extends Activity {
 			@Override
 			public void onDateChanged(DatePicker view, int year, int monthOfYear,
 					int dayOfMonth) {
-				// TODO Auto-generated method stub
 				Log.e("asd", "asd");
-				
 			}
 		});
 	}
-	
-	
 }

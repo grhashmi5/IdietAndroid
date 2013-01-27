@@ -2,9 +2,13 @@ package com.mypackage.idietandroid;
 
 
 
+import com.mypackage.idietandroid.R.string;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -95,6 +99,27 @@ public class DietSetup  extends Activity{
 	     this.protein = 0.0D;
 	     this.proteinp = 0.0D;
 	     initComponents();
+	     this.totalCaloriesEditText.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				updateFields();
+			}
+		});
 	     
 	     this.selectGoalSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 	    	    @Override
@@ -102,13 +127,17 @@ public class DietSetup  extends Activity{
 	    	    	switch (position) {
 	    		     case 0:
 	    		    	 caloriesSuggestedTextView.setText(new Double(u.scals).toString() + " - calories suggested");
+	    		    	 totalCaloriesEditText.setText(new Double(u.scals).toString());
+	    		    	 
 	    		       break;
 	    		     case 1:
 	    		    	 caloriesSuggestedTextView.setText(new Double((int)u.scals* 1.1D).toString() + "calories - suggested");
-	    		       break;
+	    		    	 totalCaloriesEditText.setText(new Double((int)u.scals* 1.1D).toString());
+	    		    	 break;
 	    		     case 2:
 	    		    	 caloriesSuggestedTextView.setText(new Double((int)u.scals* 0.9D).toString() + " -calories suggested");
-	    		     }
+	    		    	 totalCaloriesEditText.setText(new Double((int)u.scals* 0.9D).toString());
+	    	    	}
 	    	    	updateFields();
 	    	    }
 
@@ -784,12 +813,31 @@ public class DietSetup  extends Activity{
 	
 	public void onClickDoneButton (View view){
 		
-		Intent intent = new Intent(this, DailyActivity.class);
+		double carbValue =Double.valueOf( carbohydratesEditText.getText().toString());
+		double protValue = Double.valueOf(proteinsEditText.getText().toString());
+		double fatsValue = Double.valueOf(fatsEditText.getText().toString());
+		double caloriesValue = Double.valueOf(totalCaloriesEditText.getText().toString());
+		String goal = selectGoalSpinner.getSelectedItem().toString();
 		
+		TestAdapter mDbHelper = new TestAdapter(this);         
+    	mDbHelper.createDatabase();       
+    	mDbHelper.open();
+    	int id = mDbHelper.getUserId(this.u.firstName);
+    	
+    	boolean isDietInserted = mDbHelper.saveDiet(id , carbValue, protValue, fatsValue, caloriesValue, goal);
+    	
+    	if (isDietInserted){
+    		Utility.ShowMessageBox(this, "Diet details added");
+    		
+    	}
+    	else{
+    		Utility.ShowMessageBox(this, "Try again");
+    	}
+		Intent intent = new Intent(this, DailyActivity.class);
+		ActivitiesBringe.setObject(this.u);
 		startActivity(intent);
 	}
 	
 	
 	
-	
-	}
+}

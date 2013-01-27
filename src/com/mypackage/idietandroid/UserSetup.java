@@ -112,7 +112,7 @@ public class UserSetup extends Activity {
 		this.u.byear = 2012;
 		this.u.gender = 0;
 		this.u.units = 0;
-		/*if (passWordEditText.getText().toString().equalsIgnoreCase(repeatPassWordEditText.getText().toString())){
+		if (passWordEditText.getText().toString().equalsIgnoreCase(repeatPassWordEditText.getText().toString())){
 			this.u.pwd = passWordEditText.getText().toString();
 		}
 		else{
@@ -225,7 +225,7 @@ public class UserSetup extends Activity {
 	    	long count = mDbHelper.noOfRowsInTable();
 	    	
 	    	Utility.ShowMessageBox(this,Long.toString(count) );
-	    	mDbHelper.close();*/
+	    	mDbHelper.close();
 	    	
 	    	
 	    	Intent intent = new Intent(this, DietSetup.class);
