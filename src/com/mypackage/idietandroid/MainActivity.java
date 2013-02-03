@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class MainActivity extends Activity {
 	Spinner loadFNameSpinner;
+	EditText loginUserPasswordEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,12 +35,36 @@ public class MainActivity extends Activity {
     
     public void init() {
 		this.loadFNameSpinner = (Spinner) findViewById(R.id.loadFNameSpinner);
+		this.loginUserPasswordEditText = (EditText) findViewById(R.id.editText1);
 	}
 
     public void onClick(View view) {
     	startActivity(new Intent("net.learn2develop.UserSetup"));
 		
 	}
+    
+    public void loginPressed(View view){
+    	if (loginUserPasswordEditText.getText().toString().trim().length() == 0){
+    		Utility.ShowMessageBox(this, "please enter password");
+    	} else{
+    		TestAdapter mDbHelper = new TestAdapter(this);         
+        	mDbHelper.createDatabase();       
+        	mDbHelper.open();
+        	//mDbHelper.isUserAlreadyExist(loadFNameSpinner.getSelectedItem().toString());
+        	boolean isPasswordCorrect = mDbHelper.loginUser(loadFNameSpinner.getSelectedItem().toString(),loginUserPasswordEditText.getText().toString() );
+        	if (isPasswordCorrect){
+        		Intent intent = new Intent(this, DailyActivity.class);
+        		User user = mDbHelper.getUser(loadFNameSpinner.getSelectedItem().toString());
+        		
+        		ActivitiesBringe.setObject(user);
+        		startActivity(intent);
+        	} else{
+        		Utility.ShowMessageBox(this, "please enter correct password");
+        	}
+    	}
+    	
+    	
+    }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

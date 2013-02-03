@@ -3,21 +3,180 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <TextView
         android:id="@+id/mealHeadingTextView"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:gravity="center"
-	    android:text="Meals"
-	    android:textAppearance="?android:attr/textAppearanceLarge"
-	    android:textStyle="bold" />
-    
-     <DatePicker
-        android:id="@+id/mealDatePicker"
-     	android:layout_width="wrap_content"
-     	android:layout_height="wrap_content" 
-     />
-    
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Meals"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow>
+
+            <TextView
+                android:id="@id/selectMealTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="Select Meal"
+                android:textStyle="normal" />
+
+            <Spinner
+                android:id="@id/selectMealNameSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </TableRow>
+        
+                 <TableRow >
+
+             <TextView
+                 android:id="@id/carbTextView"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="5dip"
+                 android:layout_weight="2"
+                 android:gravity="left"
+                 android:text="Carbohydrates:"
+                 android:textStyle="normal" />
+             
+             <EditText
+                 android:id="@id/carbEditText"
+                  android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="1dip"
+                 android:ems="10"
+                 android:inputType="numberDecimal"
+                 android:layout_weight="2"
+                 android:editable="false" >
+
+            </EditText>
+            
+             <TextView
+                android:id="@id/carbGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="g"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+             
+         </TableRow>
+         
+                  <TableRow >
+             <TextView
+                android:id="@id/protiensTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Protiens:"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="2"/>
+             
+             <EditText
+                 android:id="@id/protiensEditText"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="numberDecimal"
+                 android:layout_weight="2"
+                 android:editable="false" >
+
+            </EditText>
+            
+             <TextView
+                android:id="@id/protiensGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="g"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+             
+         </TableRow>
+                <TableRow >
+             <TextView
+                android:id="@id/calsTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="calories:"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="2"/>
+             
+             <EditText
+                 android:id="@id/calsEditText"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="numberDecimal"
+                 android:layout_weight="2"
+                 android:editable="false" >
+
+            </EditText>
+            
+             <TextView
+                android:id="@id/calsGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="g"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"/>
+             
+         </TableRow>
+         
+         <TableRow >
+             <TextView
+                android:id="@id/fatsTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Fats:"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="2"/>
+             
+             <EditText
+                 android:id="@id/fatsEditText"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="4dip"
+                 android:ems="10"
+                 android:inputType="numberDecimal"
+                 android:layout_weight="2" 
+                 android:editable="false"
+                 >
+
+            </EditText>
+            
+             <TextView
+                android:id="@id/fatsGramTextView"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="g"
+                android:textStyle="normal" 
+                android:layout_margin="4dip"
+                android:layout_weight="1"
+                
+                />
+             
+         </TableRow>
+    </TableLayout>
 
 </LinearLayout>

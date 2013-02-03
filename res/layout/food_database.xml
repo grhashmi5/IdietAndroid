@@ -6,7 +6,8 @@
     <LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:orientation="vertical" >
+	    android:orientation="vertical"
+	    android:baselineAligned="true" >
 	
 	<!--      <TextView
 	        android:id="@+id/textView1"
@@ -32,8 +33,7 @@
                 android:text="Select food group"
                 android:textStyle="normal" 
                 android:layout_margin="12dip"
-                android:layout_weight="0"
-                android:layout_gravity="center_vertical" />
+                 />
 	
 	           
 	        </TableRow>
@@ -51,7 +51,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:text="Select food"
-	        android:gravity="center"
+	        android:gravity="left"
 	        android:textStyle="normal"
 	        />
 	            
@@ -94,7 +94,7 @@
                 android:textStyle="normal"
                 android:ems="10"
                 android:layout_margin="4dip"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 >
             </EditText>
             <TextView
@@ -105,7 +105,7 @@
                 android:text="g"
                 android:textStyle="normal" 
                 android:layout_margin="4dip"
-                android:layout_weight="1"/>
+                android:layout_weight=".5"/>
          </TableRow>
 
          
@@ -127,19 +127,19 @@
                  android:layout_width="0dip"
                  android:layout_height="wrap_content"
                  android:layout_margin="5dip"
-                 android:layout_weight="1"
+                 android:layout_weight="2"
                  android:gravity="left"
-                 android:text="Carb:"
+                 android:text="Carbohydrates:"
                  android:textStyle="normal" />
              
              <EditText
                  android:id="@+id/carbEditText"
                   android:layout_width="0dip"
                  android:layout_height="wrap_content"
-                 android:layout_margin="4dip"
+                 android:layout_margin="1dip"
                  android:ems="10"
                  android:inputType="numberDecimal"
-                 android:layout_weight="1"
+                 android:layout_weight="2"
                  android:editable="false" >
 
             </EditText>
@@ -165,7 +165,7 @@
                 android:text="Protiens:"
                 android:textStyle="normal" 
                 android:layout_margin="4dip"
-                android:layout_weight="1"/>
+                android:layout_weight="2"/>
              
              <EditText
                  android:id="@+id/protiensEditText"
@@ -174,7 +174,7 @@
                  android:layout_margin="4dip"
                  android:ems="10"
                  android:inputType="numberDecimal"
-                 android:layout_weight="1"
+                 android:layout_weight="2"
                  android:editable="false" >
 
             </EditText>
@@ -202,7 +202,7 @@
                 android:text="calories:"
                 android:textStyle="normal" 
                 android:layout_margin="4dip"
-                android:layout_weight="1"/>
+                android:layout_weight="2"/>
              
              <EditText
                  android:id="@+id/calsEditText"
@@ -211,7 +211,7 @@
                  android:layout_margin="4dip"
                  android:ems="10"
                  android:inputType="numberDecimal"
-                 android:layout_weight="1"
+                 android:layout_weight="2"
                  android:editable="false" >
 
             </EditText>
@@ -237,7 +237,7 @@
                 android:text="Fats:"
                 android:textStyle="normal" 
                 android:layout_margin="4dip"
-                android:layout_weight="1"/>
+                android:layout_weight="2"/>
              
              <EditText
                  android:id="@+id/fatsEditText"
@@ -246,7 +246,7 @@
                  android:layout_margin="4dip"
                  android:ems="10"
                  android:inputType="numberDecimal"
-                 android:layout_weight="1" 
+                 android:layout_weight="2" 
                  android:editable="false"
                  >
 
@@ -299,34 +299,43 @@
       	<TableRow>
 	
 	            <TextView
-	            android:layout_width="wrap_content"
+	            android:id ="@+id/selectMealTextView"
+	            android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Select Meal"
+               	android:text="Select Meal"
                 android:textStyle="normal" 
-                android:layout_margin="12dip"
-                android:layout_weight="0"
-                android:layout_gravity="center_vertical" />
+                android:layout_weight="1"
+                android:singleLine="true"
+                
+                 />
+	            
+	            <Spinner
+	                android:id="@+id/selectMealNameSpinner"
+	                android:layout_width="0dp"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="2" />
       	
       	</TableRow>
-      	<TableRow >
-      	    <Spinner
-	                android:id="@+id/selectMealNameSpinner"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_gravity="left" />
-      	</TableRow>
-       
-       
+      	
        <TableRow >
 	            <Button 
 	        android:id = "@+id/addButton"
 	        android:layout_height="wrap_content"
-	        android:text="Add"
+	        android:text="Add New meal"
 	        android:layout_width="0dip"
 	        android:layout_weight="1"
 	        android:layout_margin="4dip"
 	        android:onClick="addMeal"
+	        	/>
+	            
+	            <Button 
+	        android:id = "@+id/addExistingMealButton"
+	        android:layout_height="wrap_content"
+	        android:text="Add to existing meal"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:layout_margin="4dip"
+	        android:onClick="addExistingMeal"
 	        	/>
 	     </TableRow>
          

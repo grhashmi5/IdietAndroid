@@ -35,14 +35,14 @@ public class DailyActivity extends TabActivity {
 		Intent intentFDB = new Intent().setClass(this, FoodDatabaseActivity.class);
 		TabSpec tabFDB = tabHost
 			.newTabSpec("FoodDataBase")
-			.setIndicator("Food Database")
+			.setIndicator("Add Meals")
 			.setContent(intentFDB);
 		
 		
 		Intent intentMeals = new Intent().setClass(this, Meals.class);
 		TabSpec tabMeal = tabHost
 			.newTabSpec("Meals")
-			.setIndicator("Meals ")
+			.setIndicator("Meal Details ")
 			.setContent(intentMeals);
 		
 		tabHost.addTab(tabFDB);

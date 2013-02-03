@@ -833,6 +833,7 @@ public class DietSetup  extends Activity{
     	else{
     		Utility.ShowMessageBox(this, "Try again");
     	}
+    	mDbHelper.close();
 		Intent intent = new Intent(this, DailyActivity.class);
 		ActivitiesBringe.setObject(this.u);
 		startActivity(intent);

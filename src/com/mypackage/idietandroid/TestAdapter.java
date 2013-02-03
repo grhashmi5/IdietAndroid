@@ -86,7 +86,7 @@ public class TestAdapter
     }
     
     public int getUserId(String firstName) {
-    	String selectQuery = "SELECT  id FROM USER";
+    	String selectQuery = "SELECT  id FROM USER WHERE fName="+"'"+firstName+"'";
     	Cursor cursor = mDb.rawQuery(selectQuery, null);
     	cursor.moveToFirst();
     	int id = cursor.getInt(0);
@@ -116,6 +116,18 @@ public class TestAdapter
     	return dictionary;
     }
     
+    public List<String> getMealDetails(int userId,String mealName) {
+    	List<String> labels = new ArrayList<String>();
+    	String selectQuery = "SELECT Carb,Prot,Fat,Cal FROM Meals WHERE user_id_fk = "+"'"+userId+"'"+"AND name = "+"'"+mealName+"'"; ;
+    	Cursor cursor = mDb.rawQuery(selectQuery, null);
+    	cursor.moveToFirst();
+    	labels.add(cursor.getString(0));
+    	labels.add(cursor.getString(1));
+    	labels.add(cursor.getString(2));
+    	labels.add(cursor.getString(3));
+    	return labels;
+	}
+    
     public List<String> getAllLabels(String tableName, int id){
         List<String> labels = new ArrayList<String>();
         String selectQuery;
@@ -128,11 +140,16 @@ public class TestAdapter
         }
         else if (tableName == "food"){
         	selectQuery = "SELECT  long_desc FROM " + tableName + " WHERE food_group_id = "+"'"+id+"'";
-        } else{
+        } 
+        
+        else if (tableName == "Meals"){
+        	selectQuery = "SELECT  name FROM " + tableName + " WHERE user_id_fk = "+"'"+id+"'";
+        }
+        else
+        {
         	selectQuery = "SELECT  name FROM " + tableName;
         }
-        
-        Cursor cursor = mDb.rawQuery(selectQuery, null);
+        try{Cursor cursor = mDb.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
             	labels.add(cursor.getString(0));
@@ -146,7 +163,14 @@ public class TestAdapter
  
         // closing connection
         cursor.close();
-       // mDb.close();
+
+        	
+        } catch(Exception e){
+        	
+        	e.printStackTrace();
+        	return null;
+        }
+               
  
         // returning lables
         
@@ -159,12 +183,7 @@ public class TestAdapter
         mDbHelper.close(); 
     } 
     
-   /* public void deleteAllData(){
-    	String sql ="Delete* FROM User;"; 
-    	 
-        Cursor mCur = mDb.rawQuery(sql, null); 
-    	
-    }*/
+   
  
      public Cursor getTestData() 
      { 
@@ -227,15 +246,72 @@ public class TestAdapter
     	 
      }
      
+     public User getUser(String fName) {
+    	 try{
+    		 String selectQuery = "SELECT * FROM User WHERE fName = "+"'"+fName+"'";
+    		 Cursor cursor = mDb.rawQuery(selectQuery, null);
+    		 User user = new User();
+    		 cursor.moveToFirst(); 
+
+    		 user.firstName = cursor.getString(1);
+    		 user.lastName = cursor.getString(2);
+    		 user.pwd = cursor.getString(3);
+    		 user.bmonth = cursor.getInt(4);
+    		 user.bday = cursor.getInt(5);
+    		 user.byear = cursor.getInt(6);
+    		 user.height = cursor.getDouble(7);
+    		 user.weight = cursor.getDouble(8);
+    		 user.units = cursor.getInt(9);
+    		 user.gender = cursor.getInt(10);
+    		 user.bPressure = cursor.getInt(11);
+    		 user.bSugar = cursor.getInt(12);
+    		 user.metabolism = cursor.getInt(13);
+    		 user.activity = cursor.getInt(14);
+    		 return user;
+    		 
+    	 }	
+    	 catch(Exception ex)
+    	 {
+    		 return null;
+    	 }
+    	 
+     }
+     
+     boolean isUserAlreadyExist(String userName){
+    	String selectQuery = "SELECT * FROM User WHERE fName = "+"'"+userName+"'";
+     	Cursor cursor = mDb.rawQuery(selectQuery, null);
+     	if (cursor!= null){
+     		Log.e("user name exist", "Not emty");
+     		return true;
+     	} else{
+     		return false;
+     				
+     	}
+     	
+     }
+     
+     boolean loginUser(String userName, String password){
+    	String selectQuery = "SELECT password FROM User WHERE fName = "+"'"+userName+"'";
+      	Cursor cursor = mDb.rawQuery(selectQuery, null);
+      	cursor.moveToFirst();
+      	String result = cursor.getString(0);
+      	if (result.equalsIgnoreCase(password)){
+      		return true;
+      	} else {
+      		return false;
+      	}
+     }
+     
      public boolean saveDiet( int userId, double carb, double protiens, double fats, double calories, 
     		 String goal) {
     	 try{
     		 ContentValues cv = new ContentValues();
-        	 /*cv.put("diet_id", dietId);*/
+        	 /*cv.put("diet_id", 25);*/
         	 cv.put("user_id_fk", userId);
         	 cv.put("carbohydrates", carb);
         	 cv.put("fats", fats);
-        	 cv.put("protiens", goal);
+        	 cv.put("protiens", protiens);
+        	 cv.put("goal", goal);
         	 mDb.insert("Diet", null, cv);
 
   			Log.d("SaveDiet", "informationsaved");
@@ -256,9 +332,16 @@ public class TestAdapter
      }
 
      
-     long noOfRowsInMealsTable(){
-    	 /*long count;*/
-    	 return DatabaseUtils.queryNumEntries(mDb, "Meals");
+     long noOfRowsInMealsTable(int userId){
+    	 
+    	 String selectQuery = "SELECT  COUNT (*) FROM Meals WHERE user_id_fk = "+"'"+userId+"'";
+		 Cursor cursor = mDb.rawQuery(selectQuery, null);
+		 
+		 cursor.moveToFirst();
+		 
+		 long result = cursor.getLong(0);
+    	 return result;
+		 //return DatabaseUtils.queryNumEntries(mDb, "Meals");
      }
  	public boolean SaveEmployee(String name, String email) 
  	{
@@ -294,8 +377,6 @@ public class TestAdapter
  			cv.put("Day", day);
  			cv.put("Month", month);
  			cv.put("name",mealName);
- 			
- 			
  			
  			mDb.insert("Meals", null, cv);
 
