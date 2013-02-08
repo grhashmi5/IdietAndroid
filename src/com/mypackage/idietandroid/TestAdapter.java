@@ -364,6 +364,24 @@ public class TestAdapter
  		}
  	}
  	
+ 	public boolean updateMeal (int userId,double carb, double fat,double prot, double cal,String mealName) {
+ 		try{
+ 			ContentValues cv = new ContentValues();
+ 			cv.put("user_id_fk", userId);
+ 			cv.put("Carb", carb);
+ 			cv.put("Prot", prot);
+ 			cv.put("Fat", fat);
+ 			cv.put("Cal", cal);
+ 			cv.put("name",mealName);
+ 			mDb.update("Meals", cv, "user_id_fk = "+"'"+userId+"'"+" AND name = "+"'"+mealName+"'", null);
+ 			return true;
+ 		} catch (Exception e){
+ 			e.printStackTrace();
+ 			return false;
+ 		}
+		
+	}
+ 	
  	public boolean saveMeal(int userId,double carb, double fat,double prot, double cal,int day, int year, int month, String mealName) {
  		try
  		{

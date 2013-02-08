@@ -38,6 +38,11 @@ public class Meals extends Activity implements OnItemSelectedListener {
 		init();
 	}
 
+	@Override 
+	protected void onResume(){
+		super.onResume();
+		loadSpinnerData();
+	}
 	private void init() {
 		carbEditText = (EditText) findViewById(R.id.carbEditText);
 		carbEditText.setEnabled(false);

@@ -411,7 +411,9 @@ loadFoodFactors();
 				TestAdapter mDbHelper = new TestAdapter(this);
 				mDbHelper.createDatabase();
 				mDbHelper.open();
+				String mealName = selectMealSpinner.getSelectedItem().toString();
 				int id = mDbHelper.getUserId(this.u.firstName);
+				List mealDetails = mDbHelper.getMealDetails(id,mealName );
 				double carb =Double.valueOf( carbEditText.getText().toString());
 				double fat =Double.valueOf( fatsEditText.getText().toString());
 				double prot =Double.valueOf( proteinEditText.getText().toString());
@@ -419,11 +421,11 @@ loadFoodFactors();
 				int day = mealDAtePicker.getDayOfMonth();
 				int month = mealDAtePicker.getMonth();
 				int year = mealDAtePicker.getYear();
-				String mealName = selectMealSpinner.getSelectedItem().toString();
+				
 
-				boolean isNewMealAdded = mDbHelper.saveMeal(id,carb, fat, prot, cal, day, year, month, mealName);
-
-				if (isNewMealAdded){
+				//boolean isNewMealAdded = mDbHelper.saveMeal(id,carb+(Double.parseDouble(mealDetails.get(0).toString())), fat+(Double.parseDouble(mealDetails.get(2).toString())), prot+(Double.parseDouble(mealDetails.get(1).toString())), cal+(Double.parseDouble(mealDetails.get(3).toString())), day, year, month, mealName);
+				boolean isUpdated = mDbHelper.updateMeal(id, carb+(Double.parseDouble(mealDetails.get(0).toString())), fat+(Double.parseDouble(mealDetails.get(2).toString())), prot+(Double.parseDouble(mealDetails.get(1).toString())), cal+(Double.parseDouble(mealDetails.get(3).toString())),mealName);
+				if (isUpdated){
 					Utility.ShowMessageBox(this, "New Meal added");
 					long count = mDbHelper.noOfRowsInMealsTable(id);
 
